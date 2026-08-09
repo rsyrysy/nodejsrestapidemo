@@ -1,106 +1,58 @@
-# Project Overview
+# Node.js REST API Demo
 
-This project is a RESTful API built with Node.js that serves as a backend for data-driven applications. It provides a robust and scalable architecture to handle varying loads and user requests.
+[![CI](https://github.com/rsyrysy/nodejsrestapidemo/actions/workflows/ci.yml/badge.svg)](https://github.com/rsyrysy/nodejsrestapidemo/actions)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-# Features
-- RESTful API architecture
-- CRUD operations for managing resources
-- User authentication and authorization
-- Data validation and sanitization
-- Comprehensive logging and error handling
+A production-ready, world-class Node.js REST API demonstrating modern software engineering best practices. This repository can serve as a template or starting point for your backend services.
 
-# Technology Stack
-- **Node.js**: JavaScript runtime for server-side programming
-- **Express.js**: Web framework for building APIs
-- **MongoDB**: NoSQL database for data storage
-- **Mongoose**: ODM for MongoDB and Node.js
-- **Jest**: Testing framework for JavaScript
+## Features
 
-# Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/rsyrysy/nodejsrestapidemo.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd nodejsrestapidemo
-   ```
-3. Install dependencies:
+- **Modern Architecture**: Cleanly separated routes, controllers, and config (`src/` directory).
+- **Environment Configuration**: Uses `dotenv` for managing sensitive credentials securely.
+- **Robust Database Connection**: Connection pooling for SQL Server via `mssql`.
+- **API Documentation**: Interactive Swagger UI available at `/api-docs`.
+- **Security & Reliability**: Configured with `helmet`, `cors`, and centralized error handling.
+- **Code Quality**: Enforced via ESLint and Prettier.
+- **Containerization**: Included `Dockerfile` and `docker-compose.yml` for effortless local development.
+- **Continuous Integration**: GitHub Actions workflow pre-configured for automated checks.
+
+## Quick Start (with Docker)
+
+The easiest way to run the API is via Docker Compose:
+
+```bash
+# Clone the repository
+git clone https://github.com/rsyrysy/nodejsrestapidemo.git
+cd nodejsrestapidemo
+
+# Start the application
+docker-compose up --build
+```
+
+The API will be available at http://127.0.0.1:9000.
+View API Documentation at http://127.0.0.1:9000/api-docs.
+
+## Manual Setup
+
+1. **Install dependencies**:
    ```bash
    npm install
    ```
-4. Configure your environment variables as required in a `.env` file.
 
-# API Endpoints
-### 1. GET /api/resource
-- **Description**: Retrieves all resources.
-- **Response**: Array of resources
+2. **Configure Environment**:
+   Create a `.env` file in the root based on `.env.example` (or configure DB credentials directly).
 
-### 2. POST /api/resource
-- **Description**: Creates a new resource.
-- **Request Body**: `{ "name": "Resource Name", "description": "Resource Description" }`
-- **Response**: Created resource object
+3. **Run the server**:
+   ```bash
+   # Development mode with nodemon
+   npm run dev
 
-### 3. GET /api/resource/:id
-- **Description**: Retrieves a single resource by ID.
-- **Response**: Resource object
+   # Production mode
+   npm start
+   ```
 
-### 4. PUT /api/resource/:id
-- **Description**: Updates a resource by ID.
-- **Request Body**: `{ "name": "New Name" }`
-- **Response**: Updated resource object
+## Development
 
-### 5. DELETE /api/resource/:id
-- **Description**: Deletes a resource by ID.
-- **Response**: Success message
-
-# Database Configuration
-- Configure your MongoDB connection string in the `.env` file:
-  ```
-  MONGODB_URI=mongodb://<username>:<password>@host:port/database
-  ```
-
-# Architecture
-- The application follows an MVC architecture where:
-  - **Model**: Manages data and business logic
-  - **View**: Represents the user interface (not applicable for APIs)
-  - **Controller**: Handles incoming requests, processes data, and returns responses
-
-# Sample Data
-- **Resource Example**: 
-  ```json
-  {
-      "id": "12345",
-      "name": "Sample Resource",
-      "description": "This is a sample resource."
-  }
-  ```
-
-# Code Quality Issues
-- Use linters and formatters like ESLint and Prettier to maintain code quality.
-- Ensure consistent coding styles and practices throughout the codebase.
-
-# Security Considerations
-- Validate and sanitize user inputs to prevent SQL Injection and XSS attacks.
-- Utilize HTTPS for secure data transmission.
-- Implement proper authentication mechanisms such as JWT for securing endpoints.
-
-# Production Recommendations
-- Always use environment variables for sensitive configurations.
-- Enable logging and monitoring in production to track performance and errors.
-- Consider using Docker for deploying applications.
-
-# Contributing Guidelines
-- Fork the repository and clone it locally.
-- Create a new branch for your feature or fix.
-- Ensure tests are added for new features.
-- Submit a pull request with a clear description of your changes.
-
-# Additional Resources
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Express.js Documentation](https://expressjs.com/)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-
----
-
-This documentation provides a comprehensive overview of the project, including essential information for developers and contributors to understand and effectively work with the API.
+- `npm run lint`: Lint the codebase using ESLint.
+- `npm run format`: Format code using Prettier.
+- `npm test`: Run tests via Jest.
